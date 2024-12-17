@@ -24,7 +24,7 @@ fun PengelolaHalaman(
     modifier: Modifier = Modifier
 ){
     NavHost(navController = navController,
-        startDestination = DestinasiInsert.route)
+        startDestination = DestinasiHome.route)
     {
         composable(
             route = DestinasiHome.route
@@ -71,7 +71,8 @@ fun PengelolaHalaman(
                     modifier = modifier,
                     onDeleteClick = {
                         navController.popBackStack()
-                    }
+                    },
+                    onEditClick = {navController.navigate("${DestinasiUpdate.route}/$it")}
                 )
             }
         }
