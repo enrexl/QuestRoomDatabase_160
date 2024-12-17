@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DateRange
@@ -41,6 +42,7 @@ import com.ersaditya.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.ersaditya.ui.customwidget.CustomTopAppBar
 
 @Composable
 fun HomeMhsView(
@@ -51,14 +53,15 @@ fun HomeMhsView(
 ){
     Scaffold(
         topBar = {
-            TopAppBar(
+            CustomTopAppBar(
                 judul = "Daftar Mahasiswa",
                 showBackButton = false,
                 onBack = {},
                 modifier = modifier
             )
+
         },
-        floatingActionButton = {                // tombol add di kiri bawah
+        floatingActionButton = {                // tombol add di kanan bawah
             FloatingActionButton(
                 onClick = onAddMhs,
                 shape = MaterialTheme.shapes.medium,
@@ -124,8 +127,7 @@ fun BodyHomeMhsView(
                     modifier = Modifier.padding(16.dp)
                 )
             }
-        }
-    } else ->{
+        }else ->{
         //menampilkan daftar mahasiswa
         ListMahasiswa(
             listMhs = homeUiState.listMhs,
@@ -135,9 +137,8 @@ fun BodyHomeMhsView(
             },
             modifier = modifier
         )
+    } }
 
-
-    }
 
 }
 @Composable
@@ -151,10 +152,12 @@ fun ListMahasiswa(
     ) {
         items(
             items = listMhs,
-            itemContent = mhs ->
-            CardMhs(mhs = mhs,
-                onClick = {onClick(mhs)})
-
+            itemContent = {mhs ->
+                CardMhs(
+                    mhs = mhs,
+                    onClick = {onClick(mhs.nim)}
+                )
+            }
         )
     }
 }
