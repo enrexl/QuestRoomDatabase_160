@@ -66,7 +66,7 @@ fun DetailMhsView(
                 modifier = Modifier.padding(16.dp)
             ) {
                 Icon(
-                    imageVector = Icons.Default.Edit,
+                    imageVector = Icons.Default.Edit,           //edit floating button
                     contentDescription = "Edit Mahasiswa",
                 )
             }
