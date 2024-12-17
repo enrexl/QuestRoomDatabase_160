@@ -32,7 +32,7 @@ class UpdateMhsViewModel (
         }
     }
 
-    fun updateState(MahasiswaEvent: MahasiswaEvent){
+    fun updateState(mahasiswaEvent: MahasiswaEvent){
         updateUIState = updateUIState.copy(
             mahasiswaEvent = mahasiswaEvent,
         )
